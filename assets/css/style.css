@@ -1,0 +1,99 @@
+body {
+	background-color: #518EA0;
+	overflow: hidden;
+}
+
+#mainContainer {
+	width: 750px;
+	margin: 0 auto;
+}
+
+#interface {
+	background-image: url("../images/back.jpg");
+	background-repeat: no-repeat;
+	height:800px;
+	margin-top: 30px;
+	position:relative;
+}
+/* --- Instructions --- */
+#instructions {
+	background-color:#A57C37;
+	position: absolute;
+	top:-400px;
+	left:-122px;
+	width: 435px;
+	padding: 15px;
+    margin: 0 auto;
+	z-index: 999; 
+	color: white;
+	font-family: 'Fredoka One', cursive;
+	border-radius: 25px;
+	height:510px;
+}
+
+#guessNumber {
+	padding: 10px;
+	position:absolute;
+	top: 60px;
+	left:170px;
+	color:#E8E2B2;
+	font-family: 'Fredoka One', cursive;
+}
+
+#scoreboard {
+	position:absolute;
+	top:160px;
+	left:275px;
+	font-family: 'Fredoka One', cursive;
+	font-size: 16px;
+	color:#C7375B;
+	line-height: 10px;
+}
+
+#crystals {
+	position:absolute;
+	top:445px;
+	left:130px;
+}
+
+.crystalImage {
+	margin-left: 20px;
+}
+
+#totalScore {
+	position:absolute;
+	top:540px;
+	left:220px;
+}
+
+#scoreText {
+	font-family: 'Fredoka One', cursive;
+	color:#C7375B;
+}
+
+#warning {
+	padding: 20px;
+	font-family: 'Fredoka One', cursive;
+	font-size: 24px;
+	color:#C7375B;
+	position: absolute;
+	top:285px;
+	left:255px;
+	background-image: url(../images/empty.png);
+	background-repeat: no-repeat;
+	height:123px;
+	width:120px;
+}
+
+#button {
+    background-color: #C7375B; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+	font-size: 14px;
+	font-family: 'Fredoka One', cursive;
+	float:right;
+	border-radius: 5px;
+}
