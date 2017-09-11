@@ -1,12 +1,14 @@
 body {
 	background-color: #518EA0;
 	overflow: hidden;
+	margin: 0;
 }
 
 #mainContainer {
 	width: 750px;
 	margin: 0 auto;
 }
+
 
 #interface {
 	background-image: url("../images/back.jpg");
@@ -15,18 +17,19 @@ body {
 	margin-top: 30px;
 	position:relative;
 }
-/* --- Instructions --- */
+
 #instructions {
 	background-color:#A57C37;
 	position: absolute;
-	top:-400px;
-	left:-122px;
+	top:-410px;
+	left:-132px;
 	width: 435px;
 	padding: 15px;
     margin: 0 auto;
 	z-index: 999; 
 	color: white;
 	font-family: 'Fredoka One', cursive;
+	font-size: 19px;
 	border-radius: 25px;
 	height:510px;
 }
@@ -34,8 +37,8 @@ body {
 #guessNumber {
 	padding: 10px;
 	position:absolute;
-	top: 60px;
-	left:170px;
+	top: 70px;
+	left:185px;
 	color:#E8E2B2;
 	font-family: 'Fredoka One', cursive;
 }
@@ -62,8 +65,8 @@ body {
 
 #totalScore {
 	position:absolute;
-	top:540px;
-	left:220px;
+	top:550px;
+	left:230px;
 }
 
 #scoreText {
@@ -71,7 +74,7 @@ body {
 	color:#C7375B;
 }
 
-#warning {
+#medals {
 	padding: 20px;
 	font-family: 'Fredoka One', cursive;
 	font-size: 24px;

@@ -71,7 +71,7 @@ $(document).ready(function() {
 		$('#partialScore').text(counter); // display score current score
 
 		var numberToMatch = Math.floor(Math.random()*(120-19+1)+19); // generate random number with 9-120 range
-		$('.value').text(numberToMatch); // display number to match
+		$('.numberMatch').text(numberToMatch); // display number to match
 
 		$('.crystalImage').on('click', function(){
 			counter = counter + parseInt($(this).data('num'));
@@ -80,7 +80,7 @@ $(document).ready(function() {
 
 		    if (counter == numberToMatch){
 			  winAudio.play();
-			  $('#warning').html( "<img src='assets/images/win.png'>" );
+			  $('#medals').html( "<img src='assets/images/win.png'>" );
 		      wins ++;
 		      $('#wins').text(wins);
 		      $('#crystals').empty();
@@ -89,7 +89,7 @@ $(document).ready(function() {
 		        
 		    } else if ( counter > numberToMatch){
 				lostAudio.play();
-				$('#warning').html( "<img src='assets/images/lost.png'>" );
+				$('#medals').html( "<img src='assets/images/lost.png'>" );
 		        losses ++;
 		        $('#losses').text(losses);
 		        $('#crystals').empty();
