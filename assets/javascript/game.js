@@ -6,9 +6,9 @@ $(document).ready(function() {
 	var wins = 0;
 	var losses = 0;
 	var theme = new Audio('assets/audio/theme.mp3');  // loads theme audio
-	var beep = new Audio('assets/audio/beep.mp3');  // loads beep
-	beep.preload = 'auto';
-	beep.load();
+	var clickSound = new Audio('assets/audio/beep.mp3');  // loads clickSound
+	clickSound.preload = 'auto';
+	clickSound.load();
 	var winAudio = new Audio('assets/audio/winAudio.mp3');  // loads win effect 
 	var lostAudio = new Audio('assets/audio/lostAudio.mp3');  // loads lost effect 
 	
@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 	// this function plays sound even if the previous has not ended	
 	$("#crystals").click(function(){
-		  var click=beep.cloneNode();
+		  var click=clickSound.cloneNode();
 		  click.play();
 			});
 
@@ -75,11 +75,12 @@ $(document).ready(function() {
 		var numberToMatch = Math.floor(Math.random()*(120-19+1)+19); // generate random number with 9-120 range
 		$('.numberMatch').text(numberToMatch); // display number to match
 
-		$('.crystalImage').on('click', function(){
+		// create evenlistener to add value to counter based on crystal attribute 'num'
+		$('.crystalImage').on('click', function(){  
 			counter = counter + parseInt($(this).data('num'));
-		   
+		   // adds current score to partialScore div
 		    $('#partialScore').text(counter);
-
+			// checks numberToMatch with current score
 		    if (counter == numberToMatch){
 			  winAudio.play();
 			  $('#medals').html( "<img src='assets/images/win.png'>" );
