@@ -14,8 +14,6 @@ $(document).ready(function() {
 	var winAudio = new Audio('assets/audio/winAudio.mp3');  // loads win effect 
 	var lostAudio = new Audio('assets/audio/lostAudio.mp3');  // loads lost effect 
 	
-	
-	
 	// crystal images source
 	crystals = [
 		'assets/images/crystal01.gif',
