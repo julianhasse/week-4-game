@@ -38,11 +38,11 @@ body {
 #guessNumber {
 	padding: 10px;
 	position:absolute;
-	top:90px;
-	left:185px;
+	top:85px;
+	left:165px;
 	color:#E8E2B2;
 	font-family: 'Fredoka One', cursive;
-	font-size: 24px;
+	font-size: 30px;
 }
 
 #scoreboard {
