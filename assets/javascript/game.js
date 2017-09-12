@@ -6,14 +6,15 @@ $(document).ready(function() {
 	var wins = 0;
 	var losses = 0;
 	var theme = new Audio('assets/audio/theme.mp3');  // loads theme audio
+	theme.volume = 0.3; // set volume
+    theme.play(); // plays theme
 	var clickSound = new Audio('assets/audio/beep.mp3');  // loads clickSound
 	clickSound.preload = 'auto';
 	clickSound.load();
 	var winAudio = new Audio('assets/audio/winAudio.mp3');  // loads win effect 
 	var lostAudio = new Audio('assets/audio/lostAudio.mp3');  // loads lost effect 
 	
-	theme.volume = 0.3; // set volume
-    theme.play(); // plays theme
+	
 	
 	// crystal images source
 	crystals = [

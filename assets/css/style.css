@@ -21,36 +21,38 @@ body {
 #instructions {
 	background-color:#A57C37;
 	position: absolute;
-	top:-410px;
-	left:-132px;
-	width: 435px;
+	top:-480px;
+	left:-151px;
+	width: 451px;
 	padding: 15px;
     margin: 0 auto;
 	z-index: 999; 
 	color: white;
-	font-family: 'Fredoka One', cursive;
+	font-family: 'Roboto', sans-serif;
 	font-size: 19px;
 	border-radius: 25px;
-	height:510px;
+	height:550px;
+	line-height: 35px;
 }
 
 #guessNumber {
 	padding: 10px;
 	position:absolute;
-	top: 70px;
+	top:90px;
 	left:185px;
 	color:#E8E2B2;
 	font-family: 'Fredoka One', cursive;
+	font-size: 24px;
 }
 
 #scoreboard {
 	position:absolute;
-	top:160px;
+	top:175px;
 	left:260px;
 	font-family: 'Fredoka One', cursive;
-	font-size: 16px;
+	font-size:20px;
 	color:#C7375B;
-	line-height: 10px;
+	line-height:24px;
 }
 
 #crystals {
@@ -65,13 +67,14 @@ body {
 
 #totalScore {
 	position:absolute;
-	top:550px;
+	top:570px;
 	left:230px;
 }
 
 #scoreText {
 	font-family: 'Fredoka One', cursive;
 	color:#C7375B;
+	font-size:24px;
 }
 
 #medals {
