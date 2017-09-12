@@ -22,13 +22,12 @@ $(document).ready(function() {
 		'assets/images/crystal03.gif',
 		'assets/images/crystal04.gif'];
 
-
 	// set win/loss div's text 
 	$('#wins').text(wins);
 	$('#losses').text(losses);
 	
 	newCrystals();
-	newGame();
+	startGame();
 
     // Close instructions
 	$("#button").click(function(){
@@ -43,18 +42,20 @@ $(document).ready(function() {
 
 	function newCrystals () {
 		// Create an array with 4 non-repeating numbers from 1-12
-		var numbers = []
-			while(numbers.length < 4){
-			  var randomnumber = Math.ceil(Math.random()*12)
-			  var found = false;
-			  for (var i=0; i< numbers.length; i++){
-				if (numbers[i] == randomnumber){
-					found = true; break
+			var numbers = []
+			while(numbers.length < 4){ // insert 4 elements into array
+		    var randomNum = Math.ceil(Math.random()*12) // each element is a random number (1-12)
+	     	var repeatNum = false;  // set a variable and for loop to avoid repeated numbers
+			for (var i = 0; i < numbers.length; i++){
+				if (numbers[i] == randomNum){
+					repeatNum = true; break
 				}
 			  }
-			  if(!found)numbers[numbers.length]=randomnumber;
-			}
+			  if(!repeatNum)
+				numbers[numbers.length] = randomNum;
+			  } // if
 
+			 // create crystal objects with attributes & class, append to #crystal div 
 		for (i = 0; i < numbers.length; i++) {
 			var imageCrystal = $('<img>');
 			imageCrystal.attr('data-num', numbers[i]);
@@ -62,10 +63,11 @@ $(document).ready(function() {
 			imageCrystal.attr('alt', 'crystals');
 			imageCrystal.addClass('crystalImage')
 			$('#crystals').append(imageCrystal);
-		}
-	} // newCrystals
+		} // for
 
-	function newGame() {
+	} // newCrystals()
+
+	function startGame() {
 
 		counter = 0; // set counter to 0
 		$('#partialScore').text(counter); // display score current score
@@ -85,7 +87,7 @@ $(document).ready(function() {
 		      $('#wins').text(wins);
 		      $('#crystals').empty();
 		      newCrystals();
-		      newGame();
+		      startGame();
 		        
 		    } else if ( counter > numberToMatch){
 				lostAudio.play();
@@ -94,11 +96,11 @@ $(document).ready(function() {
 		        $('#losses').text(losses);
 		        $('#crystals').empty();
 		        newCrystals();
-		        newGame();
+		        startGame();
 			} // if
 			
-		}); // .crystalImage onClick
+		}); // .crystalImage onClick()
 
-	} // newGame
+	} // startGame()
 
 }); // jQuery loader
