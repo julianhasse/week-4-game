@@ -40,9 +40,9 @@ $(document).ready(function() {
 			});
 	 
 	//  
-	function createDiamond(dataNum,src) {
+	function createDiamond(dataValue,src) {
 		var diamondImage = $('<img>'); // create image div
-			diamondImage.attr({ 'data-num': dataNum, src: src, alt: "diamonds"}); // add attributes		
+			diamondImage.attr({ 'data-value': dataValue, src: src, alt: "diamonds"}); // add attributes		
 			diamondImage.addClass('diamondImage'); // add class
 			$('#diamonds').append(diamondImage); // append to div
 	}		
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
 		// create evenlistener to add value to counter based on crystal attribute 'num'
 		$('.diamondImage').on('click', function(){  
-			counter = counter + parseInt($(this).data('num'));
+			counter = counter + parseInt($(this).data('value'));
 		   // adds current score to partialScore div
 		    $('#partialScore').text(counter);
 			// checks numberToMatch with current score
