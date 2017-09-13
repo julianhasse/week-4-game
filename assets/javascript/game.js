@@ -15,7 +15,7 @@ $(document).ready(function() {
 	var lostAudio = new Audio('assets/audio/lostAudio.mp3');  // loads lost effect 
 	
 	// crystal images source
-	crystalSource = [
+	var crystalSource = [
 		'assets/images/crystal01.gif',
 		'assets/images/crystal02.gif',
 		'assets/images/crystal03.gif',
@@ -44,20 +44,21 @@ $(document).ready(function() {
 	    var imageCrystal = $('<img>');
 		    imageCrystal.attr('data-num', dataNum);
 			imageCrystal.attr('src', src);
-			imageCrystal.addClass('crystalImage')
+			imageCrystal.addClass('crystalImage');
 			$('#crystals').append(imageCrystal);
 	}		
    
 	// 
 	function newCrystals () {
 		// Create an array with 4 non-repeating numbers from 1-12
-			var values = []
+			var values = [];
 			while(values.length < 4){ // insert 4 elements into array
-		    var randomNum = Math.ceil(Math.random()*12) // each element is a random number (1-12)
+		    var randomNum = Math.ceil(Math.random()*12); // each element is a random number (1-12)
 	     	var repeatNum = false;  // set a variable and for loop to avoid repeated numbers
 			for (var i = 0; i < values.length; i++){
 				if (values[i] == randomNum){
-					repeatNum = true; break
+					repeatNum = true; 
+					break;
 				}
 			  }
 			  if(!repeatNum)
@@ -65,8 +66,8 @@ $(document).ready(function() {
 			  } // if
 
 			 // create crystal objects with attributes & class, append to #crystal div 
-			for (i = 0; i < values.length; i++) {
-        		createCrystal(values[i], crystalSource[i]);
+			for (var j = 0; j < values.length; j++) {
+        		createCrystal(values[j], crystalSource[j]);
 			} //for
 
 	} // newCrystals()
