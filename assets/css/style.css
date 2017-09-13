@@ -55,13 +55,13 @@ body {
 	line-height:24px;
 }
 
-#crystals {
+#diamonds {
 	position:absolute;
 	top:445px;
 	left:130px;
 }
 
-.crystalImage {
+.diamondImage {
 	margin-left: 20px;
 }
 

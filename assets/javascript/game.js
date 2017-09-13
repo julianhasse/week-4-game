@@ -25,7 +25,7 @@ $(document).ready(function() {
 	$('#wins').text(wins);
 	$('#losses').text(losses);
 	
-	newCrystals();
+	newDiamonds();
 	startGame();
 
     // Close instructions
@@ -34,22 +34,21 @@ $(document).ready(function() {
 		});
 
 	// this function plays sound even if the previous has not ended	
-	$("#crystals").click(function(){
+	$("#diamonds").click(function(){
 		  var click=clickSound.cloneNode();
 		  click.play();
 			});
 	 
 	//  
-	function createCrystal(dataNum,src) {
-	    var imageCrystal = $('<img>');
-		    imageCrystal.attr('data-num', dataNum);
-			imageCrystal.attr('src', src);
-			imageCrystal.addClass('crystalImage');
-			$('#crystals').append(imageCrystal);
+	function createDiamond(dataNum,src) {
+		var diamondImage = $('<img>'); // create image div
+			diamondImage.attr({ 'data-num': dataNum, src: src, alt: "diamonds"}); // add attributes		
+			diamondImage.addClass('diamondImage'); // add class
+			$('#diamonds').append(diamondImage); // append to div
 	}		
    
 	// 
-	function newCrystals () {
+	function newDiamonds () {
 		// Create an array with 4 non-repeating numbers from 1-12
 			var values = [];
 			while(values.length < 4){ // insert 4 elements into array
@@ -67,10 +66,10 @@ $(document).ready(function() {
 
 			 // create crystal objects with attributes & class, append to #crystal div 
 			for (var j = 0; j < values.length; j++) {
-        		createCrystal(values[j], crystalSource[j]);
+        		createDiamond(values[j], crystalSource[j]);
 			} //for
 
-	} // newCrystals()
+	} // newDiamonds()
 
 	function startGame() {
 
@@ -81,7 +80,7 @@ $(document).ready(function() {
 		$('.numberMatch').text(numberToMatch); // display number to match
 
 		// create evenlistener to add value to counter based on crystal attribute 'num'
-		$('.crystalImage').on('click', function(){  
+		$('.diamondImage').on('click', function(){  
 			counter = counter + parseInt($(this).data('num'));
 		   // adds current score to partialScore div
 		    $('#partialScore').text(counter);
@@ -91,8 +90,8 @@ $(document).ready(function() {
 			  $('#medals').html( "<img src='assets/images/win.png'>" );
 		      wins ++;
 		      $('#wins').text(wins);
-		      $('#crystals').empty();
-		      newCrystals();
+		      $('#diamonds').empty();
+		      newDiamonds();
 		      startGame();
 		        
 		    } else if ( counter > numberToMatch){
@@ -100,12 +99,12 @@ $(document).ready(function() {
 				$('#medals').html( "<img src='assets/images/lost.png'>" );
 		        losses ++;
 		        $('#losses').text(losses);
-		        $('#crystals').empty();
-		        newCrystals();
+		        $('#diamonds').empty();
+		        newDiamonds();
 		        startGame();
 			} // if
 			
-		}); // .crystalImage onClick()
+		}); // .diamondImage onClick()
 
 	} // startGame()
 
