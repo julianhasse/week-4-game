@@ -12,7 +12,7 @@ $(document).ready(function() {
 	clickSound.preload = 'auto';
 	clickSound.load();
 	var winAudio = new Audio('assets/audio/winAudio.mp3');  // loads win effect 
-	var lostAudio = new Audio('assets/audio/lostAudio.mp3');  // loads lost effect 
+	var loseAudio = new Audio('assets/audio/loseAudio.mp3');  // loads lose effect 
 	
 	// crystal images source
 	var crystalSource = [
@@ -95,7 +95,7 @@ $(document).ready(function() {
 		      startGame();
 		        
 		    } else if ( counter > numberToMatch){
-				lostAudio.play();
+				loseAudio.play();
 				$('#medals').html( "<img src='assets/images/lost.png'>" );
 		        losses ++;
 		        $('#losses').text(losses);
