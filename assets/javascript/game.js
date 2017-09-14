@@ -1,3 +1,5 @@
+/* Crystal Collectors, by Julian Hasse, 2017  */
+
 // jQuery loader function
 // =======================================================================
 $(document).ready(function() {
@@ -8,38 +10,44 @@ $(document).ready(function() {
 	var win = 0;
 	var lose = 0;
 	var theme = new Audio('assets/audio/theme.mp3');  // loads theme audio
-	theme.volume = 0.3; // set volume
-    theme.play(); // plays theme
-	var clickSound = new Audio('assets/audio/beep.mp3');  // loads clickSound
-	clickSound.preload = 'auto';
-	clickSound.load();
-	var winAudio = new Audio('assets/audio/winAudio.mp3');  // loads win effect 
-	var loseAudio = new Audio('assets/audio/loseAudio.mp3');  // loads lose effect 
-	
-	// Diamond images source
+	var $win = $('#win');
+	var $lose = $('#lose');
+	var $button = $("#button");
+	var $medals = $('#medals');
+	var $diamonds = $('#diamonds');
 	var diamondSrc = [
 		'assets/images/diamond01.gif',
 		'assets/images/diamond02.gif',
 		'assets/images/diamond03.gif',
 		'assets/images/diamond04.gif'];
 
-	// set win/loss div's text 
-	$('#win').text(win);
-	$('#lose').text(lose);
+	$win.text(win);
+	$lose.text(lose);
 	
+	// Initialize audio effects  
+	// ===================================================================
+	theme.volume = 0.3; // set volume
+	theme.play(); // plays theme
+	var clickSound = new Audio('assets/audio/beep.mp3');  // loads clickSound
+	clickSound.preload = 'auto';
+	clickSound.load();
+	var winAudio = new Audio('assets/audio/winAudio.mp3');  // loads win effect 
+	var loseAudio = new Audio('assets/audio/loseAudio.mp3');  // loads lose effect
+
 	// Init functions
+	// ===================================================================
 	(function init() {
 		newDiamonds();
 		startGame();
 	})();
 
     // Close instructions window
-	$("#button").click(function(){
+	$button.click(function(){
 		$("#instructions").hide(1000);
 		});
 
 	// this function plays sound even if the previous has not ended	
-	$("#diamonds").click(function(){
+	$diamonds.click(function(){
 		  var click=clickSound.cloneNode();
 		  click.play();
 			});
@@ -51,7 +59,7 @@ $(document).ready(function() {
 		var diamondImage = $('<img>'); // create image div
 			diamondImage.attr({ 'data-value': dataValue, src: src, alt: "diamonds"}); // add attributes		
 			diamondImage.addClass('diamondImage'); // add class
-			$('#diamonds').append(diamondImage); // append to div
+			$diamonds.append(diamondImage); // append to div
 	}		
    
 	// Create an array with 4 non-repeating numbers from 1-12
@@ -102,13 +110,13 @@ $(document).ready(function() {
 				// play win audio
 				winAudio.play();
 				// add gold medal
-				$('#medals').html( "<img src='assets/images/win.png'>" );
+				$medals.html( "<img src='assets/images/win.png'>" );
 				// update counter
 				win ++;
 				// update win score
-				$('#win').text(win);
+				$win.text(win);
 				// clear objects
-				$('#diamonds').empty();
+				$diamonds.empty();
 				// init functions
 		        newDiamonds();
 		        startGame();
@@ -117,13 +125,13 @@ $(document).ready(function() {
 				// play lose audio
 				loseAudio.play();
 				// add thunder medal
-				$('#medals').html( "<img src='assets/images/lost.png'>" );
+				$medals.html( "<img src='assets/images/lost.png'>" );
 				// update counter
 				lose ++;
 				// update lose score
-				$('#lose').text(lose);
+				$lose.text(lose);
 				// clear objects
-				$('#diamonds').empty();
+				$diamonds.empty();
 				// init functions
 		        newDiamonds();
 		        startGame();
