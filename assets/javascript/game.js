@@ -2,7 +2,7 @@
 // =======================================================================
 $(document).ready(function() {
 
-	// Initialize variables & audios
+	// Initialize variables 
 	// ===================================================================
 	var counter = 0;
 	var win = 0;
@@ -28,8 +28,10 @@ $(document).ready(function() {
 	$('#lose').text(lose);
 	
 	// Init functions
-	newDiamonds();
-	startGame();
+	(function init() {
+		newDiamonds();
+		startGame();
+	})();
 
     // Close instructions window
 	$("#button").click(function(){
@@ -52,13 +54,15 @@ $(document).ready(function() {
 			$('#diamonds').append(diamondImage); // append to div
 	}		
    
-	// 
+	// Create an array with 4 non-repeating numbers from 1-12
 	function newDiamonds () {
-		// Create an array with 4 non-repeating numbers from 1-12
 			var values = [];
-			while(values.length < 4){ // insert 4 elements into array
-		    var randomNum = Math.ceil(Math.random()*12); // each element is a random number (1-12)
-	     	var repeatNum = false;  // set a variable and for loop to avoid repeated numbers
+			// insert 4 elements into array
+			while(values.length < 4){ 
+			// each element is a random number (1-12)
+			var randomNum = Math.ceil(Math.random()*12); 
+			// set a variable and for loop to avoid repeated numbers
+	     	var repeatNum = false;  
 			for (var i = 0; i < values.length; i++){
 				if (values[i] == randomNum){
 					repeatNum = true; 
@@ -69,7 +73,7 @@ $(document).ready(function() {
 				values[values.length] = randomNum;
 			  } // if
 
-			 // create diamond objects with attributes & class, append to #crystal div 
+			 // create diamond objects with attributes & class, append to diamonds div 
 			for (var j = 0; j < values.length; j++) {
         		createDiamond(values[j], diamondSrc[j]);
 			} //for
@@ -77,36 +81,50 @@ $(document).ready(function() {
 	} // newDiamonds()
 
 	function startGame() {
-
-		counter = 0; // set counter to 0
-		$('#partialScore').text(counter); // display score current score
-
-		var numberToMatch = Math.floor(Math.random()*(120-19+1)+19); // generate random number with 19-120 range
-		$('.numberMatch').text(numberToMatch); // display number to match
+		// set counter to 0
+		counter = 0; 
+		// display score current score
+		$('#partialScore').text(counter); 
+		// generate random number with 19-120 range
+		var numberToMatch = Math.floor(Math.random()*(120-19+1)+19); 
+		// display number to match
+		$('.numberMatch').text(numberToMatch); 
 
 		// create evenlistener to add value to counter based on diamond attribute 'num'
 		$('.diamondImage').on('click', function(){  
 			counter = counter + parseInt($(this).data('value'));
-		   // adds current score to partialScore div
+		// adds current score to partialScore div
 		    $('#partialScore').text(counter);
 			
 	// Logic
     // =====================================================================
 		    if (counter == numberToMatch){
-			  winAudio.play();
-			  $('#medals').html( "<img src='assets/images/win.png'>" );
-		      win ++;
-		      $('#win').text(win);
-		      $('#diamonds').empty();
-		      newDiamonds();
-		      startGame();
+				// play win audio
+				winAudio.play();
+				// add gold medal
+				$('#medals').html( "<img src='assets/images/win.png'>" );
+				// update counter
+				win ++;
+				// update win score
+				$('#win').text(win);
+				// clear objects
+				$('#diamonds').empty();
+				// init functions
+		        newDiamonds();
+		        startGame();
 		        
 		    } else if ( counter > numberToMatch){
+				// play lose audio
 				loseAudio.play();
+				// add thunder medal
 				$('#medals').html( "<img src='assets/images/lost.png'>" );
-		        lose ++;
-		        $('#lose').text(lose);
-		        $('#diamonds').empty();
+				// update counter
+				lose ++;
+				// update lose score
+				$('#lose').text(lose);
+				// clear objects
+				$('#diamonds').empty();
+				// init functions
 		        newDiamonds();
 		        startGame();
 			} // if
