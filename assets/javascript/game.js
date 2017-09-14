@@ -1,10 +1,12 @@
 // jQuery loader function
+// =======================================================================
 $(document).ready(function() {
 
-	// initialize variables & load audios
+	// Initialize variables & audios
+	// ===================================================================
 	var counter = 0;
-	var wins = 0;
-	var losses = 0;
+	var win = 0;
+	var lose = 0;
 	var theme = new Audio('assets/audio/theme.mp3');  // loads theme audio
 	theme.volume = 0.3; // set volume
     theme.play(); // plays theme
@@ -14,21 +16,22 @@ $(document).ready(function() {
 	var winAudio = new Audio('assets/audio/winAudio.mp3');  // loads win effect 
 	var loseAudio = new Audio('assets/audio/loseAudio.mp3');  // loads lose effect 
 	
-	// crystal images source
-	var crystalSource = [
-		'assets/images/crystal01.gif',
-		'assets/images/crystal02.gif',
-		'assets/images/crystal03.gif',
-		'assets/images/crystal04.gif'];
+	// Diamond images source
+	var diamondSrc = [
+		'assets/images/diamond01.gif',
+		'assets/images/diamond02.gif',
+		'assets/images/diamond03.gif',
+		'assets/images/diamond04.gif'];
 
 	// set win/loss div's text 
-	$('#wins').text(wins);
-	$('#losses').text(losses);
+	$('#win').text(win);
+	$('#lose').text(lose);
 	
+	// Init functions
 	newDiamonds();
 	startGame();
 
-    // Close instructions
+    // Close instructions window
 	$("#button").click(function(){
 		$("#instructions").hide(1000);
 		});
@@ -39,7 +42,9 @@ $(document).ready(function() {
 		  click.play();
 			});
 	 
-	//  
+	// Functions
+	// ==============================================================
+	
 	function createDiamond(dataValue,src) {
 		var diamondImage = $('<img>'); // create image div
 			diamondImage.attr({ 'data-value': dataValue, src: src, alt: "diamonds"}); // add attributes		
@@ -64,9 +69,9 @@ $(document).ready(function() {
 				values[values.length] = randomNum;
 			  } // if
 
-			 // create crystal objects with attributes & class, append to #crystal div 
+			 // create diamond objects with attributes & class, append to #crystal div 
 			for (var j = 0; j < values.length; j++) {
-        		createDiamond(values[j], crystalSource[j]);
+        		createDiamond(values[j], diamondSrc[j]);
 			} //for
 
 	} // newDiamonds()
@@ -76,20 +81,22 @@ $(document).ready(function() {
 		counter = 0; // set counter to 0
 		$('#partialScore').text(counter); // display score current score
 
-		var numberToMatch = Math.floor(Math.random()*(120-19+1)+19); // generate random number with 9-120 range
+		var numberToMatch = Math.floor(Math.random()*(120-19+1)+19); // generate random number with 19-120 range
 		$('.numberMatch').text(numberToMatch); // display number to match
 
-		// create evenlistener to add value to counter based on crystal attribute 'num'
+		// create evenlistener to add value to counter based on diamond attribute 'num'
 		$('.diamondImage').on('click', function(){  
 			counter = counter + parseInt($(this).data('value'));
 		   // adds current score to partialScore div
 		    $('#partialScore').text(counter);
-			// checks numberToMatch with current score
+			
+	// Logic
+    // =====================================================================
 		    if (counter == numberToMatch){
 			  winAudio.play();
 			  $('#medals').html( "<img src='assets/images/win.png'>" );
-		      wins ++;
-		      $('#wins').text(wins);
+		      win ++;
+		      $('#win').text(win);
 		      $('#diamonds').empty();
 		      newDiamonds();
 		      startGame();
@@ -97,8 +104,8 @@ $(document).ready(function() {
 		    } else if ( counter > numberToMatch){
 				loseAudio.play();
 				$('#medals').html( "<img src='assets/images/lost.png'>" );
-		        losses ++;
-		        $('#losses').text(losses);
+		        lose ++;
+		        $('#lose').text(lose);
 		        $('#diamonds').empty();
 		        newDiamonds();
 		        startGame();
