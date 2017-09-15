@@ -6,10 +6,10 @@ $(document).ready(function() {
 
 	// Create stats Object 
 	// ===================================================================
-	var stats = new Object();
-	stats.counter = 0;
-	stats.win = 0;
-	stats.lose = 0;
+	var Stats = new Object();
+	Stats.counter = 0;
+	Stats.win = 0;
+	Stats.lose = 0;
 	
 	// Initialize variables 
 	// ===================================================================
@@ -24,8 +24,8 @@ $(document).ready(function() {
 		'assets/images/diamond03.gif',
 		'assets/images/diamond04.gif'];
 
-	$win.text(stats.win);
-	$lose.text(stats.lose);
+	$win.text(Stats.win);
+	$lose.text(Stats.lose);
 	
 	// Initialize audio effects  
 	// ===================================================================
@@ -94,9 +94,9 @@ $(document).ready(function() {
 
 	function startGame() {
 		// set counter to 0
-		stats.counter = 0; 
+		Stats.counter = 0; 
 		// display score current score
-		$('#partialScore').text(stats.counter); 
+		$('#partialScore').text(Stats.counter); 
 		// generate random number with 19-120 range
 		var numberToMatch = Math.floor(Math.random()*(120-19+1)+19); 
 		// display number to match
@@ -104,36 +104,36 @@ $(document).ready(function() {
 
 		// create evenlistener to add value to counter based on diamond attribute 'num'
 		$('.diamondImage').on('click', function(){  
-			stats.counter = stats.counter + parseInt($(this).data('value'));
+			Stats.counter = Stats.counter + parseInt($(this).data('value'));
 		// adds current score to partialScore div
-		    $('#partialScore').text(stats.counter);
+		    $('#partialScore').text(Stats.counter);
 			
 	// Logic
     // =====================================================================
-		    if (stats.counter == numberToMatch){
+		    if (Stats.counter == numberToMatch){
 				// play win audio
 				winAudio.play();
 				// add gold medal
 				$medals.html( "<img src='assets/images/win.png'>" );
 				// update counter
-				stats.win ++;
+				Stats.win ++;
 				// update win score
-				$win.text(stats.win);
+				$win.text(Stats.win);
 				// clear objects
 				$diamonds.empty();
 				// init functions
 		        newDiamonds();
 		        startGame();
 		        
-		    } else if ( stats.counter > numberToMatch){
+		    } else if ( Stats.counter > numberToMatch){
 				// play lose audio
 				loseAudio.play();
 				// add thunder medal
 				$medals.html( "<img src='assets/images/lost.png'>" );
 				// update counter
-				stats.lose ++;
+				Stats.lose ++;
 				// update lose score
-				$lose.text(stats.lose);
+				$lose.text(Stats.lose);
 				// clear objects
 				$diamonds.empty();
 				// init functions
