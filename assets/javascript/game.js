@@ -4,12 +4,15 @@
 // =======================================================================
 $(document).ready(function() {
 
+	// Create stats Object 
+	// ===================================================================
+	var stats = new Object();
+	stats.counter = 0;
+	stats.win = 0;
+	stats.lose = 0;
+	
 	// Initialize variables 
 	// ===================================================================
-	var counter = 0;
-	var win = 0;
-	var lose = 0;
-	var theme = new Audio('assets/audio/theme.mp3');  // loads theme audio
 	var $win = $('#win');
 	var $lose = $('#lose');
 	var $button = $("#button");
@@ -21,11 +24,12 @@ $(document).ready(function() {
 		'assets/images/diamond03.gif',
 		'assets/images/diamond04.gif'];
 
-	$win.text(win);
-	$lose.text(lose);
+	$win.text(stats.win);
+	$lose.text(stats.lose);
 	
 	// Initialize audio effects  
 	// ===================================================================
+	var theme = new Audio('assets/audio/theme.mp3');  // loads theme audio
 	theme.volume = 0.3; // set volume
 	theme.play(); // plays theme
 	var clickSound = new Audio('assets/audio/beep.mp3');  // loads clickSound
@@ -52,7 +56,7 @@ $(document).ready(function() {
 		  click.play();
 			});
 	 
-	// Functions
+	// Main Functions
 	// ==============================================================
 	
 	function createDiamond(dataValue,src) {
@@ -90,9 +94,9 @@ $(document).ready(function() {
 
 	function startGame() {
 		// set counter to 0
-		counter = 0; 
+		stats.counter = 0; 
 		// display score current score
-		$('#partialScore').text(counter); 
+		$('#partialScore').text(stats.counter); 
 		// generate random number with 19-120 range
 		var numberToMatch = Math.floor(Math.random()*(120-19+1)+19); 
 		// display number to match
@@ -100,36 +104,36 @@ $(document).ready(function() {
 
 		// create evenlistener to add value to counter based on diamond attribute 'num'
 		$('.diamondImage').on('click', function(){  
-			counter = counter + parseInt($(this).data('value'));
+			stats.counter = stats.counter + parseInt($(this).data('value'));
 		// adds current score to partialScore div
-		    $('#partialScore').text(counter);
+		    $('#partialScore').text(stats.counter);
 			
 	// Logic
     // =====================================================================
-		    if (counter == numberToMatch){
+		    if (stats.counter == numberToMatch){
 				// play win audio
 				winAudio.play();
 				// add gold medal
 				$medals.html( "<img src='assets/images/win.png'>" );
 				// update counter
-				win ++;
+				stats.win ++;
 				// update win score
-				$win.text(win);
+				$win.text(stats.win);
 				// clear objects
 				$diamonds.empty();
 				// init functions
 		        newDiamonds();
 		        startGame();
 		        
-		    } else if ( counter > numberToMatch){
+		    } else if ( stats.counter > numberToMatch){
 				// play lose audio
 				loseAudio.play();
 				// add thunder medal
 				$medals.html( "<img src='assets/images/lost.png'>" );
 				// update counter
-				lose ++;
+				stats.lose ++;
 				// update lose score
-				$lose.text(lose);
+				$lose.text(stats.lose);
 				// clear objects
 				$diamonds.empty();
 				// init functions
