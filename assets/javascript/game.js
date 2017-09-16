@@ -52,7 +52,7 @@ $(document).ready(function() {
 
 	// this function plays sound even if the previous has not ended	
 	$diamonds.click(function(){
-		  var click=clickSound.cloneNode();
+		  var click = clickSound.cloneNode();
 		  click.play();
 			});
 	 
@@ -67,21 +67,21 @@ $(document).ready(function() {
 	}		
    
 	// Create an array with 4 non-repeating numbers from 1-12
-	function newDiamonds () {
+	function newDiamonds() {
 			var values = [];
 			// insert 4 elements into array
-			while(values.length < 4){ 
+			while (values.length < 4){ 
 			// each element is a random number (1-12)
 			var randomNum = Math.ceil(Math.random()*12); 
 			// set a variable and for loop to avoid repeated numbers
 	     	var repeatNum = false;  
 			for (var i = 0; i < values.length; i++){
-				if (values[i] == randomNum){
+				if (values[i] === randomNum){
 					repeatNum = true; 
 					break;
 				}
 			  }
-			  if(!repeatNum)
+			  if (!repeatNum)
 				values[values.length] = randomNum;
 			  } // if
 
@@ -110,7 +110,7 @@ $(document).ready(function() {
 			
 	// Logic
     // =====================================================================
-		    if (Stats.counter == numberToMatch){
+		    if (Stats.counter === numberToMatch){
 				// play win audio
 				winAudio.play();
 				// add gold medal
