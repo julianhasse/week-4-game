@@ -43,7 +43,7 @@ $(document).ready(function() {
 	(function init() {
 		newDiamonds();
 		startGame();
-	})();
+	}());
 
     // Close instructions window
 	$button.click(function(){
@@ -116,7 +116,7 @@ $(document).ready(function() {
 				// add gold medal
 				$medals.html( "<img src='assets/images/win.png'>" );
 				// update counter
-				Stats.win ++;
+				Stats.win += 1;
 				// update win score
 				$win.text(Stats.win);
 				// clear objects
@@ -131,7 +131,7 @@ $(document).ready(function() {
 				// add thunder medal
 				$medals.html( "<img src='assets/images/lost.png'>" );
 				// update counter
-				Stats.lose ++;
+				Stats.lose += 1;
 				// update lose score
 				$lose.text(Stats.lose);
 				// clear objects
